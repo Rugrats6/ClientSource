@@ -42,14 +42,14 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
 //        imagePickerGallery = (Gallery) findViewById(R.id.GalleryOfPics);
 
         // Handle Save Button
-        final Button savePet = (Button) findViewById(R.id.button1);
-        savePet.setOnClickListener(new View.OnClickListener() {
+        final Button saveChild = (Button) findViewById(R.id.button1);
+        saveChild.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                final EditText petName = (EditText) findViewById(R.id.EditTextName);
-                final EditText petType = (EditText) findViewById(R.id.EditTextLastName);
+                final EditText childName = (EditText) findViewById(R.id.EditTextName);
+                final EditText childType = (EditText) findViewById(R.id.EditTextLastName);
                 
-                Toast.makeText(ClientSourceEntryActivity.this,petType.getText().toString().toLowerCase()+" ---- "+petName.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientSourceEntryActivity.this,childType.getText().toString().toLowerCase()+" ---- "+childName.getText().toString(), Toast.LENGTH_SHORT).show();
 //                long imageId = PetRecord.INVALID_PET_IMAGE_ID;
 //
 //                ImageView selectedImageView = (ImageView) imagePickerGallery

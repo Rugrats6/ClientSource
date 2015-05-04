@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Single menu item 
+         Set id, icon and Title for each menu item
+    -->
+    <item android:id="@+id/menu_add"
+          android:icon="@drawable/icon_add"
+          android:title="Add" />
+ 
+    <item android:id="@+id/menu_save"
+          android:icon="@drawable/icon_save"
+          android:title="Save" />
+ 
+    <item android:id="@+id/menu_search"
+          android:icon="@drawable/icon_search"
+          android:title="Search" />
+ 
+    <item android:id="@+id/menu_help"
+          android:icon="@drawable/icon_help"
+          android:title="Help" />
+ 
+    <item android:id="@+id/menu_upload"
+          android:icon="@drawable/icon_upload"
+          android:title="Upload" />  
+ 
+    <item android:id="@+id/menu_more"
+          android:icon="@drawable/icon_more"
+          android:title="More" /> 
+</menu>

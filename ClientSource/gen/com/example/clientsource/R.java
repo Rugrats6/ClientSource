@@ -18,12 +18,24 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int icon_add=0x7f020001;
+        public static final int icon_help=0x7f020002;
+        public static final int icon_more=0x7f020003;
+        public static final int icon_save=0x7f020004;
+        public static final int icon_search=0x7f020005;
+        public static final int icon_upload=0x7f020006;
     }
     public static final class id {
         public static final int EditTextLastName=0x7f070006;
         public static final int EditTextName=0x7f070003;
         public static final int button1=0x7f070009;
         public static final int dialog_date_datePicker=0x7f07000a;
+        public static final int menu_add=0x7f07000b;
+        public static final int menu_help=0x7f07000e;
+        public static final int menu_more=0x7f070010;
+        public static final int menu_save=0x7f07000c;
+        public static final int menu_search=0x7f07000d;
+        public static final int menu_upload=0x7f07000f;
         public static final int tableRow1=0x7f070001;
         public static final int tableRow2=0x7f070004;
         public static final int tableRow3=0x7f070007;
@@ -36,6 +48,7 @@ public final class R {
         public static final int activity_client_source=0x7f030000;
         public static final int client_source_entry=0x7f030001;
         public static final int dialog_date=0x7f030002;
+        public static final int menu_client_source=0x7f030003;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
