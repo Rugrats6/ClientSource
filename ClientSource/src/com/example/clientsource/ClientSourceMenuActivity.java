@@ -1,6 +1,7 @@
 package com.example.clientsource;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,7 +12,7 @@ public class ClientSourceMenuActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_client_source);
+        setContentView(R.layout.main);
     }
      
     // Initiating Menu XML file (menu.xml)
@@ -33,30 +34,24 @@ public class ClientSourceMenuActivity extends Activity {
          
         switch (item.getItemId())
         {
-        case R.id.menu_add:
+        case R.id.menu_child_entry:
             // Single menu item is selected do something
             // Ex: launching new activity/screen or show alert message
-            Toast.makeText(ClientSourceMenuActivity.this, "Add is Selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ClientSourceMenuActivity.this, "Child Entry is Selected", Toast.LENGTH_SHORT).show();
+            // Go to the other activity that displays the child's information.
+            Intent intent = new Intent(this, ClientSourceEntryActivity.class);
             return true;
  
-        case R.id.menu_save:
-            Toast.makeText(ClientSourceMenuActivity.this, "Save is Selected", Toast.LENGTH_SHORT).show();
+        case R.id.menu_check_in:
+            Toast.makeText(ClientSourceMenuActivity.this, "Check In is Selected", Toast.LENGTH_SHORT).show();
+            return true;
+ 
+        case R.id.menu_check_out:
+            Toast.makeText(ClientSourceMenuActivity.this, "Check Out is Selected", Toast.LENGTH_SHORT).show();
             return true;
  
         case R.id.menu_search:
             Toast.makeText(ClientSourceMenuActivity.this, "Search is Selected", Toast.LENGTH_SHORT).show();
-            return true;
- 
-        case R.id.menu_help:
-            Toast.makeText(ClientSourceMenuActivity.this, "Help is Selected", Toast.LENGTH_SHORT).show();
-            return true;
- 
-        case R.id.menu_upload:
-            Toast.makeText(ClientSourceMenuActivity.this, "Upload is Selected", Toast.LENGTH_SHORT).show();
-            return true;
- 
-        case R.id.menu_more:
-            Toast.makeText(ClientSourceMenuActivity.this, "More is Selected", Toast.LENGTH_SHORT).show();
             return true;
  
         default:

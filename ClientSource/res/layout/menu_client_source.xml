@@ -3,27 +3,21 @@
     <!-- Single menu item 
          Set id, icon and Title for each menu item
     -->
-    <item android:id="@+id/menu_add"
-          android:icon="@drawable/icon_add"
-          android:title="Add" />
+    <item android:id="@+id/menu_child_entry"
+          android:icon="@drawable/icon_child_entry"
+          android:title="Child Entry" />
  
-    <item android:id="@+id/menu_save"
-          android:icon="@drawable/icon_save"
-          android:title="Save" />
+    <item android:id="@+id/menu_check_in"
+          android:icon="@drawable/icon_check_in"
+          android:title="Check In" />
+ 
+    <item android:id="@+id/menu_check_out"
+          android:icon="@drawable/icon_check_out"
+          android:title="Check Out" />
  
     <item android:id="@+id/menu_search"
           android:icon="@drawable/icon_search"
           android:title="Search" />
  
-    <item android:id="@+id/menu_help"
-          android:icon="@drawable/icon_help"
-          android:title="Help" />
- 
-    <item android:id="@+id/menu_upload"
-          android:icon="@drawable/icon_upload"
-          android:title="Upload" />  
- 
-    <item android:id="@+id/menu_more"
-          android:icon="@drawable/icon_more"
-          android:title="More" /> 
+
 </menu>

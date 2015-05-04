@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView android:textColor="#fff" android:textSize="20dp"
+        android:layout_height="wrap_content" android:id="@+id/textView1"
+        android:text="Pulse 7 Demo" android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal" android:paddingTop="10dp"
+        android:paddingBottom="10dp"></TextView>
+    <TextView android:textColor="#fff" android:textSize="20dp"
+        android:layout_height="wrap_content" android:id="@+id/textView2"
+        android:text="Date and Time Picker Dialog" android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+        android:paddingBottom="25dp"></TextView>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/linearLayout1">
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:id="@+id/txtDate">
+            <requestFocus></requestFocus>
+        </EditText>
+        <Button android:layout_height="wrap_content"
+            android:layout_weight="0" android:id="@+id/btnCalendar" android:text="Calendar"
+            android:layout_width="100dp"></Button>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/linearLayout2">
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:id="@+id/txtTime">
+            <requestFocus></requestFocus>
+        </EditText>
+        <Button android:layout_height="wrap_content"
+            android:layout_weight="0" android:id="@+id/btnTimePicker"
+            android:text="Time Picker" android:layout_width="100dp"></Button>
+    </LinearLayout>
+     <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/linearLayout3">
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:id="@+id/txtDate1">
+            <requestFocus></requestFocus>
+        </EditText>
+        <Button android:layout_height="wrap_content"
+            android:layout_weight="0" android:id="@+id/btnCalendar1" android:text="Calendar"
+            android:layout_width="100dp"></Button>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/linearLayout4">
+        <EditText android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:id="@+id/txtTime1">
+            <requestFocus></requestFocus>
+        </EditText>
+        <Button android:layout_height="wrap_content"
+            android:layout_weight="0" android:id="@+id/btnTimePicker1"
+            android:text="Time Picker" android:layout_width="100dp"></Button>
+    </LinearLayout>
+    <TableLayout
+        android:id="@+id/TableLayout01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="*"
+        android:stretchColumns="1" >
+        <TableRow
+            android:id="@+id/TableRow01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Child Name:" >
+
+            </TextView>
+            <EditText
+                android:id="@+id/EditTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords" >
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:id="@+id/TableRow02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pet Species:" >
+            </TextView>
+            <AutoCompleteTextView
+                android:id="@+id/EditTextSpecies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </AutoCompleteTextView>
+        
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/ButtonSave"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" >
+    </Button>
+</LinearLayout>
