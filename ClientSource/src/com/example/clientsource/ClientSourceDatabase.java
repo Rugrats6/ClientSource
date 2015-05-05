@@ -14,6 +14,8 @@ public final class ClientSourceDatabase {
 
         private Child() {}
         
+        public static final String CHILD_ID = "child_id";
+        
         public static final String CHILD_TABLE_INFO = "child_info";
         
         public static final String LAST_NAME = "last_name";
@@ -22,6 +24,8 @@ public final class ClientSourceDatabase {
         public static final String SEX = "sex";
         public static final String SS_NUMBER = "ss_number";
         
+        public static final String PARENT_ID = "parent_id";
+        public static final String TIME_ID = "time_id";
         //public static final String DEFAULT_SORT_ORDER = "pet_name ASC";
     }
     
@@ -53,6 +57,8 @@ public final class ClientSourceDatabase {
 
         private Time() {}
             
+        public static final String TIME_ID = "time_id";
+        
         public static final String TIME_TABLE_NAME = "table_time";
         public static final String DATE = "date";
         public static final String CHECK_IN = "check_in";

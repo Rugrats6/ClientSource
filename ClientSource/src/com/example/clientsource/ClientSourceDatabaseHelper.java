@@ -32,6 +32,8 @@ class ClientSourceDatabaseHelper extends SQLiteOpenHelper {
                 + Child.DATEOF_BIRTH + " DATE"
                 + Child.SEX + " TEXT"
                 + Child.SS_NUMBER + " INTEGER"
+                + Child.PARENT_ID + "Integer" //this is a foreign key to the parents table
+                + Child.TIME_ID + "Integer" //This is a foreign key to the time table 
                 + ");");
 		
 		// Create the Parents table
