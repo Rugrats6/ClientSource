@@ -36,6 +36,8 @@ public final class ClientSourceDatabase {
 
         private Parent() {}
         
+        public static final String PARENT_ID = "parent_id";
+        
         public static final String PARENT_TABLE_NAME = "table_parent";
         
         public static final String LAST_NAME = "last_name";
@@ -47,7 +49,6 @@ public final class ClientSourceDatabase {
         
         public static final String CHILD_ID = "child_id";
         
-        public static final String PARENT_ID = "parent_id";
         
         //public static final String DEFAULT_SORT_ORDER = "pet_type ASC";
     }   
