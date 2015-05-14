@@ -96,6 +96,4 @@ public class TimeRecord implements Comparable<TimeRecord> {
 	}
 
 }
-//public int compareTo(ChildRecord other) {
-		// TODO Auto-generated method stub
-		//return (int) ((this.ChildId)-(other.ChildId));
+
