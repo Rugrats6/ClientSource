@@ -39,19 +39,29 @@ public class ClientSourceMenuActivity extends Activity {
             // Ex: launching new activity/screen or show alert message
             Toast.makeText(ClientSourceMenuActivity.this, "Child Entry is Selected", Toast.LENGTH_SHORT).show();
             // Go to the other activity that displays the child's information.
-            Intent intent = new Intent(this, ClientSourceEntryActivity.class);
+            Intent intentChildEntry = new Intent(this, ClientSourceEntryActivity.class);
+            startActivity(intentChildEntry);
             return true;
  
         case R.id.menu_check_in:
             Toast.makeText(ClientSourceMenuActivity.this, "Check In is Selected", Toast.LENGTH_SHORT).show();
+            // Go to the other activity that displays the child's information.
+            Intent intentCheckIn = new Intent(this, ClientSourceEntryActivity.class);
+            startActivity(intentCheckIn);
             return true;
  
         case R.id.menu_check_out:
             Toast.makeText(ClientSourceMenuActivity.this, "Check Out is Selected", Toast.LENGTH_SHORT).show();
+            // Go to the other activity that displays the child's information.
+            Intent intentCheckOut = new Intent(this, ClientSourceEntryActivity.class);
+            startActivity(intentCheckOut);
             return true;
  
         case R.id.menu_search:
             Toast.makeText(ClientSourceMenuActivity.this, "Search is Selected", Toast.LENGTH_SHORT).show();
+            // Go to the other activity that displays the child's information.
+            Intent intentSearch = new Intent(this, ClientSourceEntryActivity.class);
+            startActivity(intentSearch);
             return true;
  
         default:

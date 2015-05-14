@@ -27,33 +27,33 @@ class ClientSourceDatabaseHelper extends SQLiteOpenHelper {
 		// Create the Child table
 		db.execSQL("CREATE TABLE " + Child.CHILD_TABLE_INFO+ " ("
                 + Child._ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + Child.LAST_NAME + " TEXT"
-                + Child.FIRST_NAME + " TEXT"
-                + Child.DATEOF_BIRTH + " DATE"
-                + Child.SEX + " TEXT"
-                + Child.SS_NUMBER + " INTEGER"
-                + Child.PARENT_ID + "Integer" //this is a foreign key to the parents table
+                + Child.LAST_NAME + " TEXT ,"
+                + Child.FIRST_NAME + " TEXT ,"
+                + Child.DATEOF_BIRTH + " DATE ,"
+                + Child.SEX + " TEXT ,"
+                + Child.SS_NUMBER + " INTEGER ,"
+                + Child.PARENT_ID + "Integer ," //this is a foreign key to the parents table
                 + Child.TIME_ID + "Integer" //This is a foreign key to the time table 
                 + ");");
 		
 		// Create the Parents table
 		db.execSQL("CREATE TABLE " + Parent.PARENT_TABLE_NAME + " ("
                 + Parent._ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + Parent.LAST_NAME + " TEXT"
-                + Parent.FIRST_NAME + " TEXT"
-                + Parent.DATEOF_BIRTH + " DATE"
-                + Parent.SS_NUMBER + " INTEGER"
-                + Parent.PHONE_NUMBER + " INTEGER"
+                + Parent.LAST_NAME + " TEXT ,"
+                + Parent.FIRST_NAME + " TEXT ,"
+                + Parent.DATEOF_BIRTH + " DATE ,"
+                + Parent.SS_NUMBER + " INTEGER ,"
+                + Parent.PHONE_NUMBER + " INTEGER ,"
                 + Parent.CHILD_ID + " INTEGER" // this is a foreign key to the Child table
                 + ");");
 		
 		// Create the Time table
 		db.execSQL("CREATE TABLE " + Time.TIME_TABLE_NAME + " ("
 		        + Time._ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-		        + Time.DATE + " TEXT"
-		        + Time.CHECK_IN + " DATE"
-		        + Time.CHECK_OUT + " DATE"
-		        + Parent.CHILD_ID + " INTEGER" // this is a foreign key to the Child table
+		        + Time.DATE + " TEXT ,"
+		        + Time.CHECK_IN + " DATE ,"
+		        + Time.CHECK_OUT + " DATE ,"
+		        + Parent.CHILD_ID + " INTEGER ," // this is a foreign key to the Child table
 		        + Parent.PARENT_ID + " INTEGER" // this is a foreign key to the PARENT table
 		        + ");");
 		
