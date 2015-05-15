@@ -50,15 +50,24 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
         saveChild.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                final EditText childName = (EditText) findViewById(R.id.EditTextName);
+                final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
                 final EditText childLastName = (EditText) findViewById(R.id.EditTextLastName);
                 
-                Toast.makeText(ClientSourceDatePicker.this,childLastName.getText().toString().toLowerCase()+" ---- "+childName.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientSourceDatePicker.this,childLastName.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
                 String strPetType = childName.getText().toString().toLowerCase();
                 String strPetName = childLastName.getText().toString();
-                ChildRecord newRecord = new ChildRecord(strPetName, strPetType, ChildRecord.INVALID_CHILD_ID);
+                ChildRecord newRecord = new ChildRecord( childLastName, childfirstName, dateofBirth, seX, ssNumber, parentId, timeId,ChildRecord.INVALID_CHILD_ID);
                 addChildRecord(newRecord);
 
+                
+               // private String lastName; 
+                //private String firstName; 
+                //private String dateofBirth; 
+                //private String seX;
+                //private String ssNumber;
+                //private String parentId;
+               // private String timeId;
+                
                 // reset form
                 childName.setText(null);
                 childLastName.setText(null);
