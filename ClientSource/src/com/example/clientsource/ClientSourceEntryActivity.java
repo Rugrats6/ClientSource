@@ -50,6 +50,7 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
                 final EditText childType = (EditText) findViewById(R.id.EditTextLastName);
                 
                 Toast.makeText(ClientSourceEntryActivity.this,childType.getText().toString().toLowerCase()+" ---- "+childName.getText().toString(), Toast.LENGTH_SHORT).show();
+
 //                long imageId = PetRecord.INVALID_PET_IMAGE_ID;
 //
 //                ImageView selectedImageView = (ImageView) imagePickerGallery

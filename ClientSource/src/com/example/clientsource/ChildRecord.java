@@ -32,6 +32,12 @@ public class ChildRecord implements Comparable<ChildRecord>{
     
     
 
+	public ChildRecord(long invalidChildId) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getLastName() {
 		return lastName;
 	}

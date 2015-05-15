@@ -56,7 +56,7 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                 Toast.makeText(ClientSourceDatePicker.this,childLastName.getText().toString().toLowerCase()+" ---- "+childName.getText().toString(), Toast.LENGTH_SHORT).show();
                 String strPetType = childName.getText().toString().toLowerCase();
                 String strPetName = childLastName.getText().toString();
-                ChildRecord newRecord = new ChildRecord(strPetName, strPetType, ChildRecord.INVALID_CHILD_ID);
+                ChildRecord newRecord = new ChildRecord(ChildRecord.INVALID_CHILD_ID);
                 addChildRecord(newRecord);
 
                 // reset form
@@ -192,7 +192,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
             SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
             queryBuilder.setTables(Child.CHILD_TABLE_INFO);
             queryBuilder.appendWhere(Child.FIRST_NAME + "='"
-                    + newRecord.getChildName() + "'");
+                    + newRecord.getFirstName() + "'");
 
             // run the query since it's all ready to go
             Cursor c = queryBuilder.query(mDB, null, null, null, null, null,
@@ -202,7 +202,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
                 // add the new type to our list
                 ContentValues typeRecordToAdd = new ContentValues();
                 typeRecordToAdd.put(Child.FIRST_NAME,
-                        newRecord.getChildName());
+                        newRecord.getFirstName());
                 rowChildId = mDB.insert(Child.CHILD_TABLE_INFO,
                 		Child.FIRST_NAME, typeRecordToAdd);
 
@@ -216,7 +216,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
 
             // Always insert new child records, even if the names clash
             ContentValues childRecordToAdd = new ContentValues();
-            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getChildName());
+            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getFirstName());
             childRecordToAdd.put(Child._ID, rowChildId);
             mDB.insert(Child.CHILD_TABLE_INFO, Child.FIRST_NAME, childRecordToAdd);
 
