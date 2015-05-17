@@ -29,10 +29,25 @@ public class ChildRecord implements Comparable<ChildRecord>{
     parentId = parent_id;
     timeId = time_id;
 }
+    public ChildRecord (String last_name, String first_name, String dateof_birth, String sex, String ss_number) {
+        
+    lastName = last_name;
+    firstName = first_name;
+    dateofBirth = dateof_birth;
+    seX = sex;
+    ssNumber = ss_number;
+}
     
     
 
 	public ChildRecord(long invalidChildId) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public ChildRecord(String strchildName, String strchildType,
+			String imageUriString, long imageId, long invalidChildId) {
 		// TODO Auto-generated constructor stub
 	}
 
