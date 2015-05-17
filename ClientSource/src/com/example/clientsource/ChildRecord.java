@@ -29,7 +29,14 @@ public class ChildRecord implements Comparable<ChildRecord>{
     parentId = parent_id;
     timeId = time_id;
 }
+
     
+    public ChildRecord (String last_name, String parent_id, String time_id) {
+        
+        lastName = last_name;
+        parentId = parent_id;
+        timeId = time_id;
+    }
     
 
 	public String getLastName() {

@@ -28,10 +28,10 @@ public final class R {
         public static final int EditFirstName=0x7f070015;
         public static final int EditTextDateofBirth=0x7f07001b;
         public static final int EditTextLastName=0x7f070018;
-        public static final int EditTextName=0x7f070010;
         public static final int EditTextSex=0x7f07001e;
         public static final int EditTextSocialSecurityNumber=0x7f070021;
-        public static final int EditTextSpecies=0x7f070012;
+        public static final int EditlastName=0x7f070010;
+        public static final int EditparentlastName=0x7f070012;
         public static final int TableLayout01=0x7f07000e;
         public static final int TableRow01=0x7f07000f;
         public static final int TableRow02=0x7f070011;

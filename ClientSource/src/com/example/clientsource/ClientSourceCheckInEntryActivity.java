@@ -1,7 +1,5 @@
 package com.example.clientsource;
 
-import com.example.clientsource.ClientSourceDatabase.Child;
-
 import android.annotation.TargetApi;
 import android.app.LoaderManager;
 import android.content.ContentValues;
@@ -16,8 +14,10 @@ import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.Toast;
 
+import com.example.clientsource.ClientSourceDatabase.Child;
+
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class ClientSourceDatePicker extends ClientSourceActivity implements
+public class ClientSourceCheckInEntryActivity extends ClientSourceActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final int GALLERY_CURSOR_LOADER_ID = 0x1001;
     private static final String GALLERY_CURSOR_URI_ARG = "GALLERY_CURSOR_URI_ARG";
@@ -35,7 +35,7 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                 .detectAll().penaltyFlashScreen().penaltyLog().build());
         
 */
-        setContentView(R.layout.client_source_entry);
+        setContentView(R.layout.check_in);
 
         // Fill our Gallery from pictures available on the SD Card
 //        setGalleryAdapter();
@@ -50,15 +50,21 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
         saveChild.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
-                final EditText childLastName = (EditText) findViewById(R.id.EditTextLastName);
+                final EditText parentlastName = (EditText) findViewById(R.id.EditparentlastName);
+                final EditText childlastName = (EditText) findViewById(R.id.EditlastName);
                 
-                Toast.makeText(ClientSourceDatePicker.this,childLastName.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
-                String strPetType = childName.getText().toString().toLowerCase();
-                String strPetName = childLastName.getText().toString();
-                ChildRecord newRecord = new ChildRecord( childLastName, childfirstName, dateofBirth, seX, ssNumber, parentId, timeId,ChildRecord.INVALID_CHILD_ID);
-                addChildRecord(newRecord);
-
+                Toast.makeText(ClientSourceCheckInEntryActivity.this,childlastName.getText().toString().toLowerCase()+" ---- "+childlastName.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientSourceCheckInEntryActivity.this,parentlastName.getText().toString().toLowerCase()+" ---- "+parentlastName.getText().toString(), Toast.LENGTH_SHORT).show();
+                String strPetType = childlastName.getText().toString().toLowerCase();
+                String strPetName = parentlastName.getText().toString();
+                
+                ChildRecord newRecord = new ChildRecord(childlastName, );
+                updateChildRecord(newRecord);
+                
+                ParentRecord newParentRecord = new ParentRecord(parentlastName, );
+                updateParentRecord(newParentRecord);
+                
+                TimeRecord newTimeRecord = new TimeRecord();
                 
                // private String lastName; 
                 //private String firstName; 
@@ -69,8 +75,8 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                // private String timeId;
                 
                 // reset form
-                childfirstName.setText(null);
-                childLastName.setText(null);
+                parentlastName.setText(null);
+                childlastName.setText(null);
             }
         });
 
@@ -341,4 +347,4 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //        }
 //    }
 
-}
+

@@ -28,6 +28,12 @@ public class ParentRecord implements Comparable<ParentRecord> {
         phoneNumber = phone_number;
         childId = child_id;
        
+    }  
+     public ParentRecord (String last_name,String child_id) {
+            
+            lastName = last_name;
+            childId = child_id;
+               
     }
     
     public String getLastName() {
