@@ -2,15 +2,21 @@ package com.example.clientsource;
 
 import android.annotation.TargetApi;
 import android.app.LoaderManager;
+import android.content.ContentValues;
 import android.content.Loader;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteQueryBuilder;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Gallery;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.clientsource.ClientSourceDatabase.Child;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ClientSourceEntryActivity extends ClientSourceActivity implements
@@ -51,19 +57,19 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
                 
                 Toast.makeText(ClientSourceEntryActivity.this,childType.getText().toString().toLowerCase()+" ---- "+childName.getText().toString(), Toast.LENGTH_SHORT).show();
 
-//                long imageId = PetRecord.INVALID_PET_IMAGE_ID;
-//
-//                ImageView selectedImageView = (ImageView) imagePickerGallery
-//                        .getSelectedView();
-//
-//                Uri imageUri = (Uri) selectedImageView.getTag();
-//                String imageUriString = imageUri.toString();
-//
-//                String strPetType = petType.getText().toString().toLowerCase();
-//                String strPetName = petName.getText().toString();
-//                PetRecord newRecord = new PetRecord(strPetName, strPetType,
-//                        imageUriString, imageId, PetRecord.INVALID_PET_ID);
-//                addPetRecord(newRecord);
+                long imageId = ChildRecord.INVALID_CHILD_ID;
+
+                ImageView selectedImageView = (ImageView) imagePickerGallery
+                        .getSelectedView();
+
+                Uri imageUri = (Uri) selectedImageView.getTag();
+                String imageUriString = imageUri.toString();
+
+                String strChildType = childType.getText().toString().toLowerCase();
+                String strChildName = childName.getText().toString();
+                ChildRecord newRecord = new ChildRecord(strChildName, strChildType,
+                        imageUriString, imageId, ChildRecord.INVALID_CHILD_ID);
+                addChildRecord(newRecord);
 //
 //                // reset form
 //                petName.setText(null);
@@ -183,57 +189,56 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //    }
 //
 //    // Add appropriate records to the database (Pet and Pet_Type)
-//    private void addPetRecord(PetRecord newRecord) {
-//
-//        // Save new records, since we're saving multiple records, let's do a
-//        // transaction so it's all or nothing
-//        mDB.beginTransaction();
-//        try {
-//
-//            // check if species type exists already
-//            long rowPetTypeId = 0;
-//
-//            // SQL Query -> "select * from table_pettype where
-//            // PetType.pettype_name='string'
-//            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-//            queryBuilder.setTables(PetType.PETTYPE_TABLE_NAME);
-//            queryBuilder.appendWhere(PetType.PET_TYPE_NAME + "='"
-//                    + newRecord.getPetType() + "'");
-//
-//            // run the query since it's all ready to go
-//            Cursor c = queryBuilder.query(mDB, null, null, null, null, null,
-//                    null);
-//
-//            if (c.getCount() == 0) {
-//                // add the new type to our list
-//                ContentValues typeRecordToAdd = new ContentValues();
-//                typeRecordToAdd.put(PetType.PET_TYPE_NAME,
-//                        newRecord.getPetType());
-//                rowPetTypeId = mDB.insert(PetType.PETTYPE_TABLE_NAME,
-//                        PetType.PET_TYPE_NAME, typeRecordToAdd);
-//
-//            } else {
-//                // Type already exists, grab the row id to refer to below
-//                c.moveToFirst();
-//                rowPetTypeId = c.getLong(c.getColumnIndex(PetType._ID));
-//            }
-//
-//            c.close();
-//
-//            // Always insert new pet records, even if the names clash
-//            ContentValues petRecordToAdd = new ContentValues();
-//            petRecordToAdd.put(Pets.PET_NAME, newRecord.getPetName());
-//            petRecordToAdd.put(Pets.PET_TYPE_ID, rowPetTypeId);
-//            petRecordToAdd.put(Pets.PET_IMAGE_URI,
-//                    newRecord.getPetImageUriPath());
-//            petRecordToAdd.put(Pets.PET_IMAGE_ID, newRecord.getPetImageId());
-//            mDB.insert(Pets.PETS_TABLE_NAME, Pets.PET_NAME, petRecordToAdd);
-//
-//            mDB.setTransactionSuccessful();
-//        } finally {
-//            mDB.endTransaction();
-//        }
-//    }
+    private void addChildRecord(ChildRecord newRecord) {
+    	 // Save new records, since we're saving multiple records, let's do a
+        // transaction so it's all or nothing
+        mDB.beginTransaction();
+        try {
+
+            // check if child name exists already
+            long rowChildId = 0;
+
+            // SQL Query -> "select * from table_pettype where
+            // PetType.pettype_name='string'
+            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+            queryBuilder.setTables(Child.CHILD_TABLE_INFO);
+            queryBuilder.appendWhere(Child.LAST_NAME + "='"
+                    + newRecord.getFirstName() + "'");
+
+            // run the query since it's all ready to go
+            Cursor c = queryBuilder.query(mDB, null, null, null, null, null,
+                    null);
+
+            if (c.getCount() == 0) {
+                // add the new child to our list
+                ContentValues typeRecordToAdd = new ContentValues();
+                typeRecordToAdd.put(Child.FIRST_NAME,
+                        newRecord.getFirstName());
+                typeRecordToAdd.put(Child.LAST_NAME,
+                        newRecord.getLastName());
+                rowChildId = mDB.insert(Child.CHILD_TABLE_INFO,
+                		Child.FIRST_NAME, typeRecordToAdd);
+
+            } else {
+                // Type already exists, grab the row id to refer to below
+                c.moveToFirst();
+                rowChildId = c.getLong(c.getColumnIndex(Child._ID));
+            }
+
+            c.close();
+            
+            // update existing child records
+            String strFilter = "_id=" + rowChildId;
+            ContentValues childRecordToAdd = new ContentValues();
+            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getFirstName());
+            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getFirstName());
+            mDB.update(Child.CHILD_TABLE_INFO, childRecordToAdd, strFilter, null);
+
+            mDB.setTransactionSuccessful();
+        } finally {
+            mDB.endTransaction();
+        }
+    }
 //
 //    public class ImageUriAdapter extends CursorAdapter {
 //

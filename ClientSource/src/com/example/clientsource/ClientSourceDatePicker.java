@@ -51,6 +51,7 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
             public void onClick(View v) {
 
                 final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
+<<<<<<< HEAD
                 final EditText childLastName = (EditText) findViewById(R.id.EditTextLastName);
                 final EditText dateofBirth = (EditText) findViewById(R.id.EditTextDateofBirth);
                 
@@ -64,6 +65,22 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                 String strdateofBirth = dateofBirth.getText().toString();
 
                 ChildRecord newRecord = new ChildRecord( childLastName, childfirstName, strdateofBirth, seX, ssNumber, parentId, timeId,ChildRecord.INVALID_CHILD_ID);
+=======
+                final EditText childlastName = (EditText) findViewById(R.id.EditTextLastName);
+                final EditText dateofBirth = (EditText) findViewById(R.id.EditTextDateofBirth);
+                final EditText seX = (EditText) findViewById(R.id.EditTextSex);
+                final EditText ssNumber = (EditText) findViewById(R.id.EditTextSocialSecurityNumber);
+                
+                Toast.makeText(ClientSourceDatePicker.this,childlastName.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
+                String strChildType = childfirstName.getText().toString().toLowerCase();
+                String strChildName = childlastName.getText().toString();
+                String strdateofBirth = dateofBirth.getText().toString();
+                String strseX = seX.getText().toString();
+                String strssNumber = ssNumber.getText().toString();
+                
+
+                ChildRecord newRecord = new ChildRecord( childlastName, childfirstName, dateofBirth, seX, ssNumber, ChildRecord.INVALID_CHILD_ID);
+>>>>>>> 5832d47cb0ef1cb551d76a414c60ea940c63cea6
                 addChildRecord(newRecord);
 
                 
@@ -77,7 +94,11 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                 
                 // reset form
                 childfirstName.setText(null);
+<<<<<<< HEAD
+                childlastName.setText(null);
+=======
                 childLastName.setText(null);
+>>>>>>> 432d8033735c5f85332402cdb140425da2643486
             }
         });
 
