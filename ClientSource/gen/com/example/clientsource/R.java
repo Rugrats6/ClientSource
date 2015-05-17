@@ -24,7 +24,10 @@ public final class R {
         public static final int icon_search=0x7f020004;
     }
     public static final class id {
+        public static final int ButtonEnterMoreKids=0x7f070027;
+        public static final int ButtonEnterMorePets=0x7f070029;
         public static final int ButtonSave=0x7f070010;
+        public static final int ButtonShowChilds=0x7f070020;
         public static final int EditFirstName=0x7f070012;
         public static final int EditTextDateofBirth=0x7f070018;
         public static final int EditTextLastName=0x7f070015;
@@ -32,6 +35,7 @@ public final class R {
         public static final int EditTextSocialSecurityNumber=0x7f07001e;
         public static final int EditlastName=0x7f07000d;
         public static final int EditparentlastName=0x7f07000f;
+        public static final int RelativeLayoutHeader=0x7f070026;
         public static final int TableLayout01=0x7f07000b;
         public static final int TableRow01=0x7f07000c;
         public static final int TableRow02=0x7f07000e;
@@ -39,14 +43,15 @@ public final class R {
         public static final int btnTimePicker=0x7f070007;
         public static final int btnTimePicker1=0x7f07000a;
         public static final int button1=0x7f07001f;
-        public static final int dialog_date_datePicker=0x7f070020;
+        public static final int dialog_date_datePicker=0x7f070021;
         public static final int linearLayout1=0x7f070002;
         public static final int linearLayout2=0x7f070005;
         public static final int linearLayout4=0x7f070008;
-        public static final int menu_check_in=0x7f070022;
-        public static final int menu_check_out=0x7f070023;
-        public static final int menu_child_entry=0x7f070021;
-        public static final int menu_search=0x7f070024;
+        public static final int menu_check_in=0x7f070023;
+        public static final int menu_check_out=0x7f070024;
+        public static final int menu_child_entry=0x7f070022;
+        public static final int menu_search=0x7f070025;
+        public static final int petList=0x7f070028;
         public static final int tableRow1=0x7f070011;
         public static final int tableRow2=0x7f070013;
         public static final int tableRow3=0x7f070016;
@@ -69,6 +74,7 @@ public final class R {
         public static final int dialog_date=0x7f030003;
         public static final int main=0x7f030004;
         public static final int menu_client_source=0x7f030005;
+        public static final int showchilds=0x7f030006;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;

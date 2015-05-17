@@ -1,7 +1,5 @@
 package com.example.clientsource;
 
-import java.util.Date;
-
 import android.provider.BaseColumns;
 
 //FYI: This is the same setup as PetTracker, but we're adding a few fields for storing image URis
@@ -23,6 +21,8 @@ public final class ClientSourceDatabase {
         public static final String   DATEOF_BIRTH = "dateof_birth";
         public static final String SEX = "sex";
         public static final String SS_NUMBER = "ss_number";
+        
+        public static final String DEFAULT_SORT_ORDER = "child_name ASC";
         
         public static final String PARENT_ID = "parent_id";
         public static final String TIME_ID = "time_id";
