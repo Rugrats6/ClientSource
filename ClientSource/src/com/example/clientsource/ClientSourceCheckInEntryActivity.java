@@ -1,14 +1,11 @@
 package com.example.clientsource;
 
-import com.example.clientsource.ClientSourceDatabase.Child;
 
-import android.annotation.TargetApi;
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +13,11 @@ import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.Toast;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class ClientSourceDatePicker extends ClientSourceActivity implements
+import com.example.clientsource.ClientSourceDatabase.Child;
+
+
+//@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+public class ClientSourceCheckInEntryActivity extends ClientSourceActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final int GALLERY_CURSOR_LOADER_ID = 0x1001;
     private static final String GALLERY_CURSOR_URI_ARG = "GALLERY_CURSOR_URI_ARG";
@@ -35,7 +35,7 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                 .detectAll().penaltyFlashScreen().penaltyLog().build());
         
 */
-        setContentView(R.layout.client_source_entry);
+        setContentView(R.layout.check_in);
 
         // Fill our Gallery from pictures available on the SD Card
 //        setGalleryAdapter();
@@ -50,23 +50,31 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
         saveChild.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
-                final EditText childlastName = (EditText) findViewById(R.id.EditTextLastName);
-                final EditText dateofBirth = (EditText) findViewById(R.id.EditTextDateofBirth);
-                final EditText seX = (EditText) findViewById(R.id.EditTextSex);
-                final EditText ssNumber = (EditText) findViewById(R.id.EditTextSocialSecurityNumber);
+                final EditText parentlastName = (EditText) findViewById(R.id.EditparentlastName);
+                final EditText childlastName = (EditText) findViewById(R.id.EditlastName);
+                final EditText checkInDate = (EditText) findViewById(R.id.txtcheckInDate);
+                final EditText checkinTime = (EditText) findViewById(R.id.txtcheckinTime);
+                final EditText checkoutTime = (EditText) findViewById(R.id.txtcheckoutTime);
                 
-                Toast.makeText(ClientSourceDatePicker.this,childlastName.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
-                String strChildType = childfirstName.getText().toString().toLowerCase();
-                String strChildName = childlastName.getText().toString();
-                String strdateofBirth = dateofBirth.getText().toString();
-                String strseX = seX.getText().toString();
-                String strssNumber = ssNumber.getText().toString();
+                Toast.makeText(ClientSourceCheckInEntryActivity.this,childlastName.getText().toString().toLowerCase()+" ---- "+childlastName.getText().toString(), Toast.LENGTH_SHORT).show();
                 
-
-                ChildRecord newRecord = new ChildRecord( childlastName, childfirstName, dateofBirth, seX, ssNumber, ChildRecord.INVALID_CHILD_ID);
-                addChildRecord(newRecord);
-
+                Toast.makeText(ClientSourceCheckInEntryActivity.this,parentlastName.getText().toString().toLowerCase()+" ---- "+parentlastName.getText().toString(), Toast.LENGTH_SHORT).show();
+                
+                String strchildlastName = childlastName.getText().toString().toLowerCase();
+                String strparentlastName = parentlastName.getText().toString();
+                String strcheckInDate = checkInDate.getText().toString();
+                String strcheckinTime = checkinTime.getText().toString();
+                String strcheckoutTime = checkoutTime.getText().toString();
+                
+                
+                ChildRecord newRecord = new ChildRecord(childlastName,);
+                updateChildRecord(newRecord);
+                
+                ParentRecord newParentRecord = new ParentRecord(parentlastName,);
+                updateParentRecord(newParentRecord);
+                
+                TimeRecord newTimeRecord = new TimeRecord(checkInDate, checkinTime, checkoutTime,);
+                updateTimeRecord(newRecord);
                 
                // private String lastName; 
                 //private String firstName; 
@@ -77,12 +85,11 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                // private String timeId;
                 
                 // reset form
-                childfirstName.setText(null);
-<<<<<<< HEAD
+                parentlastName.setText(null);
                 childlastName.setText(null);
-=======
-                childLastName.setText(null);
->>>>>>> 432d8033735c5f85332402cdb140425da2643486
+                checkInDate.setText(null);
+                checkinTime.setText(null);
+                checkoutTime.setText(null);
             }
         });
 
@@ -98,6 +105,18 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
 //            }
 //        });
     }
+protected void updateChildRecord(ChildRecord newRecord) {
+		// TODO Auto-generated method stub
+		
+	}
+protected void updateParentRecord(ParentRecord newParentRecord) {
+		// TODO Auto-generated method stub
+		
+	}
+protected void updateTimeRecord(TimeRecord newRecord) {
+		// TODO Auto-generated method stub
+		
+	}
 @Override
 public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 	// TODO Auto-generated method stub
@@ -111,8 +130,58 @@ public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 @Override
 public void onLoaderReset(Loader<Cursor> loader) {
 	// TODO Auto-generated method stub
-	
 }
+
+// Save new records, since we're saving multiple records, let's do a
+// transaction so it's all or nothing
+mDB.beginTransaction();
+try {
+
+    // check if child name exists already
+    long rowChildId = 0;
+
+    // SQL Query -> "select * from table_pettype where
+    // PetType.pettype_name='string'
+    SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+    queryBuilder.setTables(Child.CHILD_TABLE_INFO);
+    queryBuilder.appendWhere(Child.LAST_NAME + "='"
+            + newRecord.getChildName() + "'");
+
+    // run the query since it's all ready to go
+    Cursor c = queryBuilder.query(mDB, null, null, null, null, null,
+            null);
+
+    if (c.getCount() == 0) {
+        // add the new child to our list
+        ContentValues typeRecordToAdd = new ContentValues();
+        typeRecordToAdd.put(Child.FIRST_NAME,
+                newRecord.getChildName());
+        typeRecordToAdd.put(Child.LAST_NAME,
+                newRecord.getChildLastName());
+        rowChildId = mDB.insert(Child.CHILD_TABLE_INFO,
+        		Child.FIRST_NAME, typeRecordToAdd);
+
+    } else {
+        // Type already exists, grab the row id to refer to below
+        c.moveToFirst();
+        rowChildId = c.getLong(c.getColumnIndex(Child._ID));
+    }
+
+    c.close();
+    
+    // update existing child records
+    String strFilter = "_id=" + rowChildId;
+    ContentValues childRecordToAdd = new ContentValues();
+    childRecordToAdd.put(Child.FIRST_NAME, newRecord.getChildName());
+    childRecordToAdd.put(Child.FIRST_NAME, newRecord.getChildName());
+    mDB.update(Child.CHILD_TABLE_INFO, childRecordToAdd, strFilter, null);
+
+    mDB.setTransactionSuccessful();
+} finally {
+    mDB.endTransaction();
+}
+}
+
 
     //
 //    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -198,7 +267,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //    }
 //
     // Add appropriate records to the database (Pet and Pet_Type)
-    private void addChildRecord(ChildRecord newRecord) {
+    /*private void addChildRecord(ChildRecord newRecord) {
 
         // Save new records, since we're saving multiple records, let's do a
         // transaction so it's all or nothing
@@ -213,7 +282,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
             SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
             queryBuilder.setTables(Child.CHILD_TABLE_INFO);
             queryBuilder.appendWhere(Child.FIRST_NAME + "='"
-                    + newRecord.getFirstName() + "'");
+                    + newRecord.getLastName() + "'");
 
             // run the query since it's all ready to go
             Cursor c = queryBuilder.query(mDB, null, null, null, null, null,
@@ -223,7 +292,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
                 // add the new type to our list
                 ContentValues typeRecordToAdd = new ContentValues();
                 typeRecordToAdd.put(Child.FIRST_NAME,
-                        newRecord.getFirstName());
+                        newRecord.getLastName());
                 rowChildId = mDB.insert(Child.CHILD_TABLE_INFO,
                 		Child.FIRST_NAME, typeRecordToAdd);
 
@@ -237,15 +306,15 @@ public void onLoaderReset(Loader<Cursor> loader) {
 
             // Always insert new child records, even if the names clash
             ContentValues childRecordToAdd = new ContentValues();
-            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getFirstName());
+            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getLastName());
             childRecordToAdd.put(Child._ID, rowChildId);
             mDB.insert(Child.CHILD_TABLE_INFO, Child.FIRST_NAME, childRecordToAdd);
 
             mDB.setTransactionSuccessful();
         } finally {
             mDB.endTransaction();
-        }
-    }
+        }*/
+    
 
 //    public class ImageUriAdapter extends CursorAdapter {
 //
@@ -352,5 +421,5 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //            break;
 //        }
 //    }
-
 }
+
