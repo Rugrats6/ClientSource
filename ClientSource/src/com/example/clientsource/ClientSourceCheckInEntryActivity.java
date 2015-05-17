@@ -1,12 +1,11 @@
 package com.example.clientsource;
 
-import android.annotation.TargetApi;
+
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +15,8 @@ import android.widget.Toast;
 
 import com.example.clientsource.ClientSourceDatabase.Child;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+
+//@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ClientSourceCheckInEntryActivity extends ClientSourceActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final int GALLERY_CURSOR_LOADER_ID = 0x1001;
@@ -52,19 +52,29 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
 
                 final EditText parentlastName = (EditText) findViewById(R.id.EditparentlastName);
                 final EditText childlastName = (EditText) findViewById(R.id.EditlastName);
+                final EditText checkInDate = (EditText) findViewById(R.id.txtcheckInDate);
+                final EditText checkinTime = (EditText) findViewById(R.id.txtcheckinTime);
+                final EditText checkoutTime = (EditText) findViewById(R.id.txtcheckoutTime);
                 
                 Toast.makeText(ClientSourceCheckInEntryActivity.this,childlastName.getText().toString().toLowerCase()+" ---- "+childlastName.getText().toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(ClientSourceCheckInEntryActivity.this,parentlastName.getText().toString().toLowerCase()+" ---- "+parentlastName.getText().toString(), Toast.LENGTH_SHORT).show();
-                String strPetType = childlastName.getText().toString().toLowerCase();
-                String strPetName = parentlastName.getText().toString();
                 
-                ChildRecord newRecord = new ChildRecord(childlastName, );
+                Toast.makeText(ClientSourceCheckInEntryActivity.this,parentlastName.getText().toString().toLowerCase()+" ---- "+parentlastName.getText().toString(), Toast.LENGTH_SHORT).show();
+                
+                String strchildlastName = childlastName.getText().toString().toLowerCase();
+                String strparentlastName = parentlastName.getText().toString();
+                String strcheckInDate = checkInDate.getText().toString();
+                String strcheckinTime = checkinTime.getText().toString();
+                String strcheckoutTime = checkoutTime.getText().toString();
+                
+                
+                ChildRecord newRecord = new ChildRecord(childlastName,);
                 updateChildRecord(newRecord);
                 
-                ParentRecord newParentRecord = new ParentRecord(parentlastName, );
+                ParentRecord newParentRecord = new ParentRecord(parentlastName,);
                 updateParentRecord(newParentRecord);
                 
-                TimeRecord newTimeRecord = new TimeRecord();
+                TimeRecord newTimeRecord = new TimeRecord(checkInDate, checkinTime, checkoutTime,);
+                updateTimeRecord(newRecord);
                 
                // private String lastName; 
                 //private String firstName; 
@@ -77,6 +87,9 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
                 // reset form
                 parentlastName.setText(null);
                 childlastName.setText(null);
+                checkInDate.setText(null);
+                checkinTime.setText(null);
+                checkoutTime.setText(null);
             }
         });
 
@@ -92,6 +105,18 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
 //            }
 //        });
     }
+protected void updateChildRecord(ChildRecord newRecord) {
+		// TODO Auto-generated method stub
+		
+	}
+protected void updateParentRecord(ParentRecord newParentRecord) {
+		// TODO Auto-generated method stub
+		
+	}
+protected void updateTimeRecord(TimeRecord newRecord) {
+		// TODO Auto-generated method stub
+		
+	}
 @Override
 public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 	// TODO Auto-generated method stub
@@ -105,8 +130,58 @@ public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 @Override
 public void onLoaderReset(Loader<Cursor> loader) {
 	// TODO Auto-generated method stub
-	
 }
+
+// Save new records, since we're saving multiple records, let's do a
+// transaction so it's all or nothing
+mDB.beginTransaction();
+try {
+
+    // check if child name exists already
+    long rowChildId = 0;
+
+    // SQL Query -> "select * from table_pettype where
+    // PetType.pettype_name='string'
+    SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+    queryBuilder.setTables(Child.CHILD_TABLE_INFO);
+    queryBuilder.appendWhere(Child.LAST_NAME + "='"
+            + newRecord.getChildName() + "'");
+
+    // run the query since it's all ready to go
+    Cursor c = queryBuilder.query(mDB, null, null, null, null, null,
+            null);
+
+    if (c.getCount() == 0) {
+        // add the new child to our list
+        ContentValues typeRecordToAdd = new ContentValues();
+        typeRecordToAdd.put(Child.FIRST_NAME,
+                newRecord.getChildName());
+        typeRecordToAdd.put(Child.LAST_NAME,
+                newRecord.getChildLastName());
+        rowChildId = mDB.insert(Child.CHILD_TABLE_INFO,
+        		Child.FIRST_NAME, typeRecordToAdd);
+
+    } else {
+        // Type already exists, grab the row id to refer to below
+        c.moveToFirst();
+        rowChildId = c.getLong(c.getColumnIndex(Child._ID));
+    }
+
+    c.close();
+    
+    // update existing child records
+    String strFilter = "_id=" + rowChildId;
+    ContentValues childRecordToAdd = new ContentValues();
+    childRecordToAdd.put(Child.FIRST_NAME, newRecord.getChildName());
+    childRecordToAdd.put(Child.FIRST_NAME, newRecord.getChildName());
+    mDB.update(Child.CHILD_TABLE_INFO, childRecordToAdd, strFilter, null);
+
+    mDB.setTransactionSuccessful();
+} finally {
+    mDB.endTransaction();
+}
+}
+
 
     //
 //    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -192,7 +267,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //    }
 //
     // Add appropriate records to the database (Pet and Pet_Type)
-    private void addChildRecord(ChildRecord newRecord) {
+    /*private void addChildRecord(ChildRecord newRecord) {
 
         // Save new records, since we're saving multiple records, let's do a
         // transaction so it's all or nothing
@@ -207,7 +282,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
             SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
             queryBuilder.setTables(Child.CHILD_TABLE_INFO);
             queryBuilder.appendWhere(Child.FIRST_NAME + "='"
-                    + newRecord.getChildName() + "'");
+                    + newRecord.getLastName() + "'");
 
             // run the query since it's all ready to go
             Cursor c = queryBuilder.query(mDB, null, null, null, null, null,
@@ -217,7 +292,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
                 // add the new type to our list
                 ContentValues typeRecordToAdd = new ContentValues();
                 typeRecordToAdd.put(Child.FIRST_NAME,
-                        newRecord.getChildName());
+                        newRecord.getLastName());
                 rowChildId = mDB.insert(Child.CHILD_TABLE_INFO,
                 		Child.FIRST_NAME, typeRecordToAdd);
 
@@ -231,15 +306,15 @@ public void onLoaderReset(Loader<Cursor> loader) {
 
             // Always insert new child records, even if the names clash
             ContentValues childRecordToAdd = new ContentValues();
-            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getChildName());
+            childRecordToAdd.put(Child.FIRST_NAME, newRecord.getLastName());
             childRecordToAdd.put(Child._ID, rowChildId);
             mDB.insert(Child.CHILD_TABLE_INFO, Child.FIRST_NAME, childRecordToAdd);
 
             mDB.setTransactionSuccessful();
         } finally {
             mDB.endTransaction();
-        }
-    }
+        }*/
+    
 
 //    public class ImageUriAdapter extends CursorAdapter {
 //
@@ -346,5 +421,5 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //            break;
 //        }
 //    }
-
+}
 
