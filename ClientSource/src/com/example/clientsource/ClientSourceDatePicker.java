@@ -52,15 +52,18 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
 
                 final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
                 final EditText childLastName = (EditText) findViewById(R.id.EditTextLastName);
+                final EditText dateofBirth = (EditText) findViewById(R.id.EditTextDateofBirth);
+                
                 
                 Toast.makeText(ClientSourceDatePicker.this,childLastName.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
-                String strPetType = childName.getText().toString().toLowerCase();
+                
+                
+                
+                String strPetType = childfirstName.getText().toString().toLowerCase();
                 String strPetName = childLastName.getText().toString();
-<<<<<<< HEAD
-                ChildRecord newRecord = new ChildRecord(ChildRecord.INVALID_CHILD_ID);
-=======
-                ChildRecord newRecord = new ChildRecord( childLastName, childfirstName, dateofBirth, seX, ssNumber, parentId, timeId,ChildRecord.INVALID_CHILD_ID);
->>>>>>> 7eee4b0a95a29f81d5dcd3342280280e82972d7e
+                String strdateofBirth = dateofBirth.getText().toString();
+
+                ChildRecord newRecord = new ChildRecord( childLastName, childfirstName, strdateofBirth, seX, ssNumber, parentId, timeId,ChildRecord.INVALID_CHILD_ID);
                 addChildRecord(newRecord);
 
                 
