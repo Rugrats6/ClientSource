@@ -125,6 +125,7 @@
 
     <Button
         android:id="@+id/button1"
+<<<<<<< HEAD
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit" />
@@ -135,6 +136,19 @@
         android:layout_height="wrap_content"
         android:text="Show All Children"
         android:textColor="#00f" >
+=======
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+    
+       <Button
+        android:id="@+id/ButtonShowChilds"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Show All Childs"
+        android:textColor="#0f0" >
+>>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
     </Button>
 
 </LinearLayout>

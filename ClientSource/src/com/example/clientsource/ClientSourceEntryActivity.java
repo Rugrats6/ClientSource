@@ -3,17 +3,16 @@ package com.example.clientsource;
 import android.annotation.TargetApi;
 import android.app.LoaderManager;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Gallery;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.clientsource.ClientSourceDatabase.Child;
@@ -52,42 +51,70 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
         saveChild.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+<<<<<<< HEAD
             	final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
                 final EditText childType = (EditText) findViewById(R.id.EditTextLastName);
                 
                 Toast.makeText(ClientSourceEntryActivity.this,childType.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
+=======
+                final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
+                final EditText childlastName = (EditText) findViewById(R.id.EditTextLastName);
+                final EditText dateofBirth = (EditText) findViewById(R.id.EditTextDateofBirth);
+                final EditText seX = (EditText) findViewById(R.id.EditTextSex);
+                final EditText ssNumber = (EditText) findViewById(R.id.EditTextSocialSecurityNumber);
+                
+                Toast.makeText(ClientSourceEntryActivity.this,childfirstName.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
+>>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
 
-                long imageId = ChildRecord.INVALID_CHILD_ID;
+               // long imageId = ChildRecord.INVALID_CHILD_ID;
 
-                ImageView selectedImageView = (ImageView) imagePickerGallery
+/*                ImageView selectedImageView = (ImageView) imagePickerGallery
                         .getSelectedView();
 
                 Uri imageUri = (Uri) selectedImageView.getTag();
+<<<<<<< HEAD
                 String imageUriString = imageUri.toString();
 
                 String strChildType = childType.getText().toString().toLowerCase();
                 String strChildName = childfirstName.getText().toString();
                 ChildRecord newRecord = new ChildRecord(strChildName, strChildType,
                         imageUriString, imageId, ChildRecord.INVALID_CHILD_ID);
+=======
+                //String imageUriString = imageUri.toString();
+*/
+                String strChildType = childfirstName.getText().toString();
+                String strChildName = childlastName.getText().toString();
+                String strdateofBirth = dateofBirth.getText().toString();
+                String strseX = seX.getText().toString();
+                String strssNumber = childlastName.getText().toString();
+                
+                
+                
+                ChildRecord newRecord = new ChildRecord(strChildName, strChildType, strdateofBirth, strseX, strssNumber);
+>>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
                 addChildRecord(newRecord);
 //
 //                // reset form
-//                petName.setText(null);
-//                petType.setText(null);
+                childfirstName.setText(null);
+                childlastName.setText(null);
+                dateofBirth.setText(null);
+                seX.setText(null);
+                ssNumber.setText(null);
+               
             }
         });
 
 //        // Handle Go to List button
-//        final Button gotoList = (Button) findViewById(R.id.ButtonShowPets);
-//        gotoList.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                // Go to other activity that displays pet list
-//                Intent intent = new Intent(PetTrackerEntryActivity.this,
-//                        PetTrackerListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        final Button gotoList = (Button) findViewById(R.id.ButtonShowChilds);
+        gotoList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // Go to other activity that displays pet list
+                Intent intent = new Intent(ClientSourceEntryActivity.this,
+                		ClientSourceListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 @Override
 public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -216,6 +243,22 @@ public void onLoaderReset(Loader<Cursor> loader) {
                         newRecord.getFirstName());
                 typeRecordToAdd.put(Child.LAST_NAME,
                         newRecord.getLastName());
+                typeRecordToAdd.put(Child.DATEOF_BIRTH,
+                        newRecord.getLastName());
+                typeRecordToAdd.put(Child.SEX,
+                        newRecord.getLastName());
+                typeRecordToAdd.put(Child.SS_NUMBER,
+                        newRecord.getLastName());
+                
+                
+                
+          /*      + Child.LAST_NAME + " TEXT ,"
+                + Child.FIRST_NAME + " TEXT ,"
+                + Child.DATEOF_BIRTH + " DATE ,"
+                + Child.SEX + " TEXT ,"
+                + Child.SS_NUMBER + " INTEGER ,"*/
+                
+                
                 rowChildId = mDB.insert(Child.CHILD_TABLE_INFO,
                 		Child.FIRST_NAME, typeRecordToAdd);
 
