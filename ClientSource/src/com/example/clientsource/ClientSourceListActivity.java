@@ -1,4 +1,4 @@
-package com.example.clientsource;
+/*package com.example.clientsource;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -182,12 +182,12 @@ public class ClientSourceListActivity extends ClientSourceActivity {
 	            String firstName = cursor.getString(colIndexFirstName);
 	            //String petImageUri = cursor.getString(colIndexPetImageUri);
 	            
-	            /*Child.CHILD_TABLE_INFO + "." + Child.LAST_NAME,
+	            Child.CHILD_TABLE_INFO + "." + Child.LAST_NAME,
 				Child.CHILD_TABLE_INFO + "." + Child.FIRST_NAME,
 				Child.CHILD_TABLE_INFO + "." + Child._ID,
 				Child.CHILD_TABLE_INFO + "." + Child.DATEOF_BIRTH,
 				Child.CHILD_TABLE_INFO + "." + Child.SEX,
-				Child.CHILD_TABLE_INFO + "." + Child.SS_NUMBER,*/
+				Child.CHILD_TABLE_INFO + "." + Child.SS_NUMBER,
 
 	            
 	            childItemHolder.lastNameView.setText(lastName);
@@ -208,3 +208,4 @@ public class ClientSourceListActivity extends ClientSourceActivity {
 }
 
 
+*/

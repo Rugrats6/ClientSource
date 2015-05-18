@@ -29,10 +29,8 @@ public class ChildRecord implements Comparable<ChildRecord>{
     parentId = parent_id;
     timeId = time_id;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
+
     public ChildRecord (String last_name, String first_name, String dateof_birth, String sex, String ss_number) {
         
     lastName = last_name;

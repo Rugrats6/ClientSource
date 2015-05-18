@@ -51,12 +51,6 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
         saveChild.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-<<<<<<< HEAD
-            	final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
-                final EditText childType = (EditText) findViewById(R.id.EditTextLastName);
-                
-                Toast.makeText(ClientSourceEntryActivity.this,childType.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
-=======
                 final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
                 final EditText childlastName = (EditText) findViewById(R.id.EditTextLastName);
                 final EditText dateofBirth = (EditText) findViewById(R.id.EditTextDateofBirth);
@@ -64,7 +58,7 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
                 final EditText ssNumber = (EditText) findViewById(R.id.EditTextSocialSecurityNumber);
                 
                 Toast.makeText(ClientSourceEntryActivity.this,childfirstName.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
->>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
+
 
                // long imageId = ChildRecord.INVALID_CHILD_ID;
 
@@ -91,7 +85,7 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
                 
                 
                 ChildRecord newRecord = new ChildRecord(strChildName, strChildType, strdateofBirth, strseX, strssNumber);
->>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
+
                 addChildRecord(newRecord);
 //
 //                // reset form
@@ -105,7 +99,7 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
         });
 
 //        // Handle Go to List button
-        final Button gotoList = (Button) findViewById(R.id.ButtonShowChilds);
+        /*final Button gotoList = (Button) findViewById(R.id.ButtonShowChilds);
         gotoList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -114,7 +108,7 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
                 		ClientSourceListActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 @Override
 public Loader<Cursor> onCreateLoader(int id, Bundle args) {

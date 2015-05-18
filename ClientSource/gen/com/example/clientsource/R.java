@@ -29,11 +29,7 @@ public final class R {
         public static final int ButtonEnterMoreKids=0x7f070027;
         public static final int ButtonEnterMorePets=0x7f070029;
         public static final int ButtonSave=0x7f070010;
-<<<<<<< HEAD
         public static final int ButtonShowChild=0x7f070020;
-=======
-        public static final int ButtonShowChilds=0x7f070020;
->>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
         public static final int EditFirstName=0x7f070012;
         public static final int EditTextDateofBirth=0x7f070018;
         public static final int EditTextLastName=0x7f070015;
@@ -57,10 +53,7 @@ public final class R {
         public static final int menu_check_out=0x7f070024;
         public static final int menu_child_entry=0x7f070022;
         public static final int menu_search=0x7f070025;
-<<<<<<< HEAD
-=======
         public static final int petList=0x7f070028;
->>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
         public static final int tableRow1=0x7f070011;
         public static final int tableRow2=0x7f070013;
         public static final int tableRow3=0x7f070016;

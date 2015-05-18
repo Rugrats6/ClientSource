@@ -1,4 +1,4 @@
-package com.example.clientsource;
+/*package com.example.clientsource;
 
 
 import android.annotation.TargetApi;
@@ -34,10 +34,10 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // use this to note how the setImageURI method is bad
-        /*StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll().penaltyFlashScreen().penaltyLog().build());
         
-*/
+
         setContentView(R.layout.check_in);
 
         // Fill our Gallery from pictures available on the SD Card
@@ -270,7 +270,7 @@ try {
 //    }
 //
     // Add appropriate records to the database (Pet and Pet_Type)
-    /*private void addChildRecord(ChildRecord newRecord) {
+    private void addChildRecord(ChildRecord newRecord) {
 
         // Save new records, since we're saving multiple records, let's do a
         // transaction so it's all or nothing
@@ -316,7 +316,7 @@ try {
             mDB.setTransactionSuccessful();
         } finally {
             mDB.endTransaction();
-        }*/
+        }
     
 
 //    public class ImageUriAdapter extends CursorAdapter {
@@ -426,3 +426,4 @@ try {
 //    }
 }
 
+*/

@@ -1,4 +1,4 @@
-package com.example.clientsource;
+/*package com.example.clientsource;
 
 import com.example.clientsource.ClientSourceDatabase.Child;
 
@@ -31,10 +31,10 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // use this to note how the setImageURI method is bad
-        /*StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll().penaltyFlashScreen().penaltyLog().build());
         
-*/
+
         setContentView(R.layout.client_source_entry);
 
         // Fill our Gallery from pictures available on the SD Card
@@ -78,16 +78,9 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                // private String timeId;
                 
                 // reset form
-<<<<<<< HEAD
+
                 childfirstName.setText(null);
                 childlastName.setText(null);
-
-=======
-                .setText(null);
-                childlastName.setText(null);
-
-
->>>>>>> 17e35012e50bb01ff7f5276e67047ddcca3bfe25
             }
         });
 
@@ -358,4 +351,4 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //        }
 //    }
 
-}
+}*/
