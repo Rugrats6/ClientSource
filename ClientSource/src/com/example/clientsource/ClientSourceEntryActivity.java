@@ -52,10 +52,10 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
         saveChild.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                final EditText childName = (EditText) findViewById(R.id.EditTextName);
+            	final EditText childfirstName = (EditText) findViewById(R.id.EditFirstName);
                 final EditText childType = (EditText) findViewById(R.id.EditTextLastName);
                 
-                Toast.makeText(ClientSourceEntryActivity.this,childType.getText().toString().toLowerCase()+" ---- "+childName.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientSourceEntryActivity.this,childType.getText().toString().toLowerCase()+" ---- "+childfirstName.getText().toString(), Toast.LENGTH_SHORT).show();
 
                 long imageId = ChildRecord.INVALID_CHILD_ID;
 
@@ -66,7 +66,7 @@ public class ClientSourceEntryActivity extends ClientSourceActivity implements
                 String imageUriString = imageUri.toString();
 
                 String strChildType = childType.getText().toString().toLowerCase();
-                String strChildName = childName.getText().toString();
+                String strChildName = childfirstName.getText().toString();
                 ChildRecord newRecord = new ChildRecord(strChildName, strChildType,
                         imageUriString, imageId, ChildRecord.INVALID_CHILD_ID);
                 addChildRecord(newRecord);

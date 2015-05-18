@@ -78,11 +78,8 @@ public class ClientSourceDatePicker extends ClientSourceActivity implements
                 
                 // reset form
                 childfirstName.setText(null);
-<<<<<<< HEAD
                 childlastName.setText(null);
-=======
-                childLastName.setText(null);
->>>>>>> 432d8033735c5f85332402cdb140425da2643486
+
             }
         });
 
@@ -197,7 +194,7 @@ public void onLoaderReset(Loader<Cursor> loader) {
 //        }
 //    }
 //
-    // Add appropriate records to the database (Pet and Pet_Type)
+    // Add appropriate records to the database (ChildName and Child_Type)
     private void addChildRecord(ChildRecord newRecord) {
 
         // Save new records, since we're saving multiple records, let's do a

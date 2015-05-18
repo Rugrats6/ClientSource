@@ -18,7 +18,7 @@ public class ClientSourceCheckIn extends Activity implements
 
    // Widget GUI
    Button btnCalendar, btnTimePicker;
-   EditText txtDate, txtTime;
+   EditText txtcheckInDate, txtcheckInTime;
 
    // Variable for storing current date and time
    private int mYear, mMonth, mDay, mHour, mMinute;
@@ -32,8 +32,8 @@ public class ClientSourceCheckIn extends Activity implements
        btnCalendar = (Button) findViewById(R.id.btnCalendar);
        btnTimePicker = (Button) findViewById(R.id.btnTimePicker);
 
-       txtDate = (EditText) findViewById(R.id.txtDate);
-       txtTime = (EditText) findViewById(R.id.txtTime);
+       txtcheckInDate = (EditText) findViewById(R.id.txtcheckInDate);
+       txtcheckInTime = (EditText) findViewById(R.id.txtcheckInTime);
 
        btnCalendar.setOnClickListener(this);
        btnTimePicker.setOnClickListener(this);
@@ -58,7 +58,7 @@ public class ClientSourceCheckIn extends Activity implements
                        public void onDateSet(DatePicker view, int year,
                                int monthOfYear, int dayOfMonth) {
                            // Display Selected date in textbox
-                           txtDate.setText(dayOfMonth + "-"
+                           txtcheckInDate.setText(dayOfMonth + "-"
                                    + (monthOfYear + 1) + "-" + year);
 
                        }
@@ -80,7 +80,7 @@ public class ClientSourceCheckIn extends Activity implements
                        public void onTimeSet(TimePicker view, int hourOfDay,
                                int minute) {
                            // Display Selected time in textbox
-                           txtTime.setText(hourOfDay + ":" + minute);
+                           txtcheckInTime.setText(hourOfDay + ":" + minute);
                        }
                    }, mHour, mMinute, false);
            tpd.show();

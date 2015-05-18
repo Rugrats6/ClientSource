@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Welcome To Client Source"
-        android:textColor="#0f0"
+        android:textColor="#00f"
         android:textSize="27sp" />
 
     <TableLayout
@@ -125,8 +125,16 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit" />
+    <Button
+        android:id="@+id/ButtonShowChild"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Show All Children"
+        android:textColor="#00f" >
+    </Button>
 
 </LinearLayout>

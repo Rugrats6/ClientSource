@@ -17,14 +17,17 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int icon_check_in=0x7f020001;
-        public static final int icon_check_out=0x7f020002;
-        public static final int icon_child_entry=0x7f020003;
-        public static final int icon_search=0x7f020004;
+        public static final int background=0x7f020000;
+        public static final int bg_handprints=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int icon_check_in=0x7f020003;
+        public static final int icon_check_out=0x7f020004;
+        public static final int icon_child_entry=0x7f020005;
+        public static final int icon_search=0x7f020006;
     }
     public static final class id {
         public static final int ButtonSave=0x7f070010;
+        public static final int ButtonShowChild=0x7f070020;
         public static final int EditFirstName=0x7f070012;
         public static final int EditTextDateofBirth=0x7f070018;
         public static final int EditTextLastName=0x7f070015;
@@ -39,14 +42,14 @@ public final class R {
         public static final int btnTimePicker=0x7f070007;
         public static final int btnTimePicker1=0x7f07000a;
         public static final int button1=0x7f07001f;
-        public static final int dialog_date_datePicker=0x7f070020;
+        public static final int dialog_date_datePicker=0x7f070021;
         public static final int linearLayout1=0x7f070002;
         public static final int linearLayout2=0x7f070005;
         public static final int linearLayout4=0x7f070008;
-        public static final int menu_check_in=0x7f070022;
-        public static final int menu_check_out=0x7f070023;
-        public static final int menu_child_entry=0x7f070021;
-        public static final int menu_search=0x7f070024;
+        public static final int menu_check_in=0x7f070023;
+        public static final int menu_check_out=0x7f070024;
+        public static final int menu_child_entry=0x7f070022;
+        public static final int menu_search=0x7f070025;
         public static final int tableRow1=0x7f070011;
         public static final int tableRow2=0x7f070013;
         public static final int tableRow3=0x7f070016;
@@ -59,8 +62,8 @@ public final class R {
         public static final int textView5=0x7f07001a;
         public static final int textView6=0x7f07001d;
         public static final int txtcheckInDate=0x7f070003;
-        public static final int txtcheckinTime=0x7f070006;
-        public static final int txtcheckoutTime=0x7f070009;
+        public static final int txtcheckInTime=0x7f070006;
+        public static final int txtcheckOutTime=0x7f070009;
     }
     public static final class layout {
         public static final int activity_client_source=0x7f030000;

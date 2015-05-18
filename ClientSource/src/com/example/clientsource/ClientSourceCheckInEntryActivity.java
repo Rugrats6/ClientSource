@@ -1,11 +1,13 @@
 package com.example.clientsource;
 
 
+import android.annotation.TargetApi;
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import com.example.clientsource.ClientSourceDatabase.Child;
 
 
 //@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ClientSourceCheckInEntryActivity extends ClientSourceActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final int GALLERY_CURSOR_LOADER_ID = 0x1001;
@@ -53,8 +56,8 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
                 final EditText parentlastName = (EditText) findViewById(R.id.EditparentlastName);
                 final EditText childlastName = (EditText) findViewById(R.id.EditlastName);
                 final EditText checkInDate = (EditText) findViewById(R.id.txtcheckInDate);
-                final EditText checkinTime = (EditText) findViewById(R.id.txtcheckinTime);
-                final EditText checkoutTime = (EditText) findViewById(R.id.txtcheckoutTime);
+                final EditText checkInTime = (EditText) findViewById(R.id.txtcheckInTime);
+                final EditText checkOutTime = (EditText) findViewById(R.id.txtcheckOutTime);
                 
                 Toast.makeText(ClientSourceCheckInEntryActivity.this,childlastName.getText().toString().toLowerCase()+" ---- "+childlastName.getText().toString(), Toast.LENGTH_SHORT).show();
                 
@@ -63,8 +66,8 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
                 String strchildlastName = childlastName.getText().toString().toLowerCase();
                 String strparentlastName = parentlastName.getText().toString();
                 String strcheckInDate = checkInDate.getText().toString();
-                String strcheckinTime = checkinTime.getText().toString();
-                String strcheckoutTime = checkoutTime.getText().toString();
+                String strcheckinTime = checkInTime.getText().toString();
+                String strcheckoutTime = checkOutTime.getText().toString();
                 
                 
                 ChildRecord newRecord = new ChildRecord(childlastName,);
@@ -73,7 +76,7 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
                 ParentRecord newParentRecord = new ParentRecord(parentlastName,);
                 updateParentRecord(newParentRecord);
                 
-                TimeRecord newTimeRecord = new TimeRecord(checkInDate, checkinTime, checkoutTime,);
+                TimeRecord newTimeRecord = new TimeRecord(checkInDate, checkInTime, checkOutTime,);
                 updateTimeRecord(newRecord);
                 
                // private String lastName; 
@@ -88,8 +91,8 @@ public class ClientSourceCheckInEntryActivity extends ClientSourceActivity imple
                 parentlastName.setText(null);
                 childlastName.setText(null);
                 checkInDate.setText(null);
-                checkinTime.setText(null);
-                checkoutTime.setText(null);
+                checkInTime.setText(null);
+                checkOutTime.setText(null);
             }
         });
 

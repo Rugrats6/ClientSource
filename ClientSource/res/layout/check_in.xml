@@ -33,11 +33,13 @@
     </requestFocus>
     </EditText>
         
-   <Button android:layout_height="wrap_content"
-           android:layout_weight="0" 
-           android:id="@+id/btnCalendar" 
-           android:text="CheckIn Date"
-           android:layout_width="100dp"></Button>
+   <Button
+       android:id="@+id/btnCalendar"
+       android:layout_width="100dp"
+       android:layout_height="wrap_content"
+       android:layout_weight="0.06"
+       android:text="CheckIn Date" >
+</Button>
     </LinearLayout>
     
     <LinearLayout 
@@ -47,17 +49,18 @@
     <EditText 
         android:layout_width="wrap_content"
    	    android:layout_height="wrap_content" android:layout_weight="1"
-        android:id="@+id/txtcheckinTime">
+        android:id="@+id/txtcheckInTime">
           <requestFocus>
               
           </requestFocus>
     </EditText>
     
-    <Button 
-        android:layout_height="wrap_content"
-        android:layout_weight="0" 
+    <Button
         android:id="@+id/btnTimePicker"
-        android:text="CheckIn Time" android:layout_width="100dp">
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.04"
+        android:text="CheckIn Time" >
         
     </Button>
     </LinearLayout>
@@ -65,12 +68,17 @@
         android:layout_height="wrap_content" android:id="@+id/linearLayout4">
         <EditText android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_weight="1"
-            android:id="@+id/txtcheckoutTime">
+            android:id="@+id/txtcheckOutTime">
             <requestFocus></requestFocus>
         </EditText>
-        <Button android:layout_height="wrap_content"
-            android:layout_weight="0" android:id="@+id/btnTimePicker1"
-            android:text="CheckOut Time" android:layout_width="100dp"></Button>
+
+        <Button
+            android:id="@+id/btnTimePicker1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05"
+            android:text="CheckOut Time" >
+</Button>
     </LinearLayout>
     <TableLayout
         android:id="@+id/TableLayout01"
